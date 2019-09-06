@@ -1,0 +1,76 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerCameraControl : MonoBehaviour
+{
+    PlayerState playerState;
+    public GameObject mainCam;
+    public float camDistance;
+    public float nextFOV;
+    public float rotationSpeed;
+    public Vector3 rotateValue;
+    public Quaternion targetRotation;
+    // Start is called before the first frame update
+    void Start()
+    {
+        playerState = GetComponent<PlayerState>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        RotateCamera();
+        CameraDistanceCheck();
+        CameraDistance();
+        Zoom();
+    }
+
+    void RotateCamera()
+    {
+        rotateValue.y += Input.GetAxis("Mouse X") * rotationSpeed * Time.deltaTime;
+        rotateValue.x -= Input.GetAxis("Mouse Y") * rotationSpeed * Time.deltaTime;
+        rotateValue.x = Mathf.Clamp(rotateValue.x, -30f, 70f);
+        targetRotation = Quaternion.Euler(rotateValue);
+
+        Quaternion q = targetRotation;
+        mainCam.transform.rotation = targetRotation;
+    }
+
+    void CameraDistance()
+    {
+        mainCam.transform.GetChild(0).localPosition = Vector3.Lerp(mainCam.transform.GetChild(0).localPosition, new Vector3(1,0, -camDistance),10*Time.deltaTime);
+    }
+
+    void CameraDistanceCheck()
+    {
+        RaycastHit rayHit;
+        float maxDistance = 5;
+        Debug.DrawRay(mainCam.transform.position, -mainCam.transform.forward * maxDistance, Color.red);
+        if (Physics.Raycast(mainCam.transform.position,  -mainCam.transform.forward,out rayHit, maxDistance)){
+            Vector3 hitPoint = rayHit.point;
+            camDistance = Vector3.Distance(hitPoint, mainCam.transform.position) - 0.5f;
+        }
+        else
+        {
+            camDistance = 5;
+        }
+    }
+
+    void Zoom()
+    {
+        if (Input.GetMouseButton(1))
+        {
+            nextFOV = 30;
+            playerState.state = PlayerState.State.Aim;
+        }
+        else
+        {
+            nextFOV = 60;
+            playerState.state = PlayerState.State.Idle;
+        }
+        float nowFov = mainCam.transform.GetChild(0).gameObject.GetComponent<Camera>().fieldOfView;
+        nowFov = Mathf.Lerp(nowFov, nextFOV, Time.deltaTime * 5);
+        mainCam.transform.GetChild(0).gameObject.GetComponent<Camera>().fieldOfView = nowFov;
+    }
+}
