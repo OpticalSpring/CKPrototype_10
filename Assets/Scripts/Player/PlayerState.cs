@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerState : MonoBehaviour
 {
     public float normalSpeed;
-    public float aimSpeed;
     public float runSpeed;
+    public float aimSpeed;
     public enum State
     {
         Idle,

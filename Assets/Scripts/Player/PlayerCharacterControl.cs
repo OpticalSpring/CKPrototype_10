@@ -17,6 +17,10 @@ public class PlayerCharacterControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    }
+
+    void FixedUpdate()
+    {
         Move();
     }
 
@@ -37,8 +41,13 @@ public class PlayerCharacterControl : MonoBehaviour
                 mainCam.transform.GetChild(1).transform.position = targetY;
                 targetPos = mainCam.transform.GetChild(1).transform.position - gameObject.transform.position;
 
-                
+                if (Input.GetKey(KeyCode.LeftShift)) {
+                    gameObject.transform.Translate(Vector3.forward * playerState.runSpeed * Time.deltaTime);
+                }
+                else
+                {
                 gameObject.transform.Translate(Vector3.forward * playerState.normalSpeed * Time.deltaTime);
+                }
             }
         }else if(playerState.state == PlayerState.State.Aim)
         {
