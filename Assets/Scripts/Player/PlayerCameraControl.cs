@@ -11,6 +11,7 @@ public class PlayerCameraControl : MonoBehaviour
     public float rotationSpeed;
     public Vector3 rotateValue;
     public Quaternion targetRotation;
+    public GameObject crossHair;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,7 +48,7 @@ public class PlayerCameraControl : MonoBehaviour
         RaycastHit rayHit;
         float maxDistance = 5;
         Debug.DrawRay(mainCam.transform.position, -mainCam.transform.forward * maxDistance, Color.red);
-        if (Physics.Raycast(mainCam.transform.position,  -mainCam.transform.forward,out rayHit, maxDistance)){
+        if (Physics.SphereCast(mainCam.transform.position,  0.5f,-mainCam.transform.forward,out rayHit, maxDistance)){
             Vector3 hitPoint = rayHit.point;
             camDistance = Vector3.Distance(hitPoint, mainCam.transform.position) - 0.5f;
         }
@@ -63,14 +64,18 @@ public class PlayerCameraControl : MonoBehaviour
         {
             nextFOV = 30;
             playerState.state = PlayerState.State.Aim;
+            crossHair.SetActive(true);
         }
         else
         {
             nextFOV = 60;
             playerState.state = PlayerState.State.Idle;
+            crossHair.SetActive(false);
         }
         float nowFov = mainCam.transform.GetChild(0).gameObject.GetComponent<Camera>().fieldOfView;
         nowFov = Mathf.Lerp(nowFov, nextFOV, Time.deltaTime * 5);
         mainCam.transform.GetChild(0).gameObject.GetComponent<Camera>().fieldOfView = nowFov;
     }
+
+    
 }

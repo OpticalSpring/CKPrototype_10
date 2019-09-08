@@ -21,7 +21,21 @@ public class PlayerCharacterControl : MonoBehaviour
 
     void FixedUpdate()
     {
+        Jump();
         Move();
+    }
+
+    void Jump()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && playerState.state != PlayerState.State.Aim)
+        {
+            RaycastHit rayHit;
+            float maxDistance = 0.5f;
+            if (Physics.Raycast(gameObject.transform.position + new Vector3(0, 0.4f, 0), Vector3.down, out rayHit, maxDistance))
+            {
+                GetComponent<Rigidbody>().AddForce(Vector3.up * playerState.jumpPower, ForceMode.Impulse);
+            }
+        }
     }
 
     void Move()
@@ -59,6 +73,8 @@ public class PlayerCharacterControl : MonoBehaviour
             
             gameObject.transform.Translate(new Vector3(inputValue.x*playerState.aimSpeed * Time.deltaTime, 0, inputValue.y * playerState.aimSpeed * Time.deltaTime));
         }
-    gameObject.transform.rotation = Quaternion.Slerp(gameObject.transform.rotation, Quaternion.LookRotation(targetPos), Time.deltaTime* 10);
+        
+        Vector3 look = Vector3.Slerp(gameObject.transform.forward, targetPos.normalized, Time.deltaTime * playerState.rotateSpeed);
+        gameObject.transform.rotation = Quaternion.LookRotation(look, Vector3.up);
     }
 }
