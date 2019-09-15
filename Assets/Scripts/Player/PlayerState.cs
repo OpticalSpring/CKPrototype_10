@@ -9,7 +9,11 @@ public class PlayerState : MonoBehaviour
     public float aimSpeed;
     public float rotateSpeed;
     public float jumpPower;
+    public float shotPower;
     public Vector3 velocity;
+    public GameObject weapon;
+    public Transform weaponPoint;
+    public Transform weaponTargetPos;
     public enum State
     {
         Idle,

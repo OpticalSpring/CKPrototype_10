@@ -8,6 +8,7 @@ public class PlayerCharacterControl : MonoBehaviour
     public Vector2 inputValue;
     public GameObject mainCam;
     public Vector3 targetPos;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +24,30 @@ public class PlayerCharacterControl : MonoBehaviour
     {
         Jump();
         Move();
+        Shot();
+    }
+
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Weapon"))
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                if (playerState.weapon == null)
+                {
+                    playerState.weapon = other.gameObject;
+                }
+                else
+                {
+                    playerState.weapon.transform.position = other.gameObject.transform.position;
+                    playerState.weapon.transform.parent = null;
+                    playerState.weapon = other.gameObject;
+                }
+                other.transform.parent = playerState.weaponPoint;
+                other.transform.localPosition = new Vector3(0, 0, 0);
+            }
+        }
     }
 
     void Jump()
@@ -36,6 +61,29 @@ public class PlayerCharacterControl : MonoBehaviour
                 GetComponent<Rigidbody>().AddForce(Vector3.up * playerState.jumpPower, ForceMode.Impulse);
             }
         }
+    }
+
+    void Shot()
+    {
+        if (playerState.state == PlayerState.State.Aim && Input.GetMouseButtonDown(0))
+        {
+            playerState.weapon.transform.parent = null;
+            playerState.weapon.transform.LookAt(playerState.weaponTargetPos);
+            playerState.weapon.GetComponent<Weapon>().use = true;
+            playerState.weapon.GetComponent<Rigidbody>().isKinematic = false;
+            playerState.weapon.GetComponent<Rigidbody>().AddForce(playerState.weapon.transform.forward * playerState.shotPower, ForceMode.Impulse);
+            playerState.weapon = null;
+        }
+    }
+    void Turn(GameObject obj, Vector3 target)
+    {
+        float dz = target.z - obj.transform.position.z;
+        float dx = target.x - obj.transform.position.x;
+
+        float rotateDegree = Mathf.Atan2(dx, dz) * Mathf.Rad2Deg;
+        
+            obj.transform.rotation = Quaternion.RotateTowards(obj.transform.rotation, Quaternion.Euler(0, rotateDegree, 0), playerState.rotateSpeed * Time.deltaTime);
+        
     }
 
     void Move()
@@ -53,7 +101,7 @@ public class PlayerCharacterControl : MonoBehaviour
                 Vector3 targetY = mainCam.transform.GetChild(1).transform.position;
                 targetY.y = gameObject.transform.position.y;
                 mainCam.transform.GetChild(1).transform.position = targetY;
-                targetPos = mainCam.transform.GetChild(1).transform.position - gameObject.transform.position;
+                targetPos = mainCam.transform.GetChild(1).transform.position;
 
                 if (Input.GetKey(KeyCode.LeftShift)) {
                     gameObject.transform.Translate(Vector3.forward * playerState.runSpeed * Time.deltaTime);
@@ -69,12 +117,13 @@ public class PlayerCharacterControl : MonoBehaviour
             Vector3 targetY = mainCam.transform.GetChild(1).transform.position;
             targetY.y = gameObject.transform.position.y;
             mainCam.transform.GetChild(1).transform.position = targetY;
-            targetPos = mainCam.transform.GetChild(1).transform.position - gameObject.transform.position;
+            targetPos = mainCam.transform.GetChild(1).transform.position;
             
             gameObject.transform.Translate(new Vector3(inputValue.x*playerState.aimSpeed * Time.deltaTime, 0, inputValue.y * playerState.aimSpeed * Time.deltaTime));
         }
-        
-        Vector3 look = Vector3.Slerp(gameObject.transform.forward, targetPos.normalized, Time.deltaTime * playerState.rotateSpeed);
-        gameObject.transform.rotation = Quaternion.LookRotation(look, Vector3.up);
+
+        Turn(gameObject, targetPos);
+        //Vector3 look = Vector3.Slerp(gameObject.transform.forward, targetPos.normalized, Time.deltaTime * playerState.rotateSpeed);
+        //gameObject.transform.rotation = Quaternion.LookRotation(look, Vector3.up);
     }
 }

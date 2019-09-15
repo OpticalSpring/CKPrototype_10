@@ -60,7 +60,7 @@ public class PlayerCameraControl : MonoBehaviour
 
     void Zoom()
     {
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButton(1) && playerState.weapon != null)
         {
             nextFOV = 30;
             playerState.state = PlayerState.State.Aim;
