@@ -31,10 +31,11 @@ public class GameManager : MonoBehaviour
             }
     }
     
-  public  void TimeStop()
+  public void TimeStop()
     {
         Time.timeScale = 0;
         timeStopValue = 15;
+        Debug.Log("TimeStop");
     }
     
 }

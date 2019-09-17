@@ -31,7 +31,7 @@ public class PlayerCharacterControl : MonoBehaviour
 
     void TimeResum()
     {
-        if(gameManager.timeStopValue > 0 && gameManager.timeStopValue < 15)
+        if(gameManager.timeStopValue > 0 && gameManager.timeStopValue < 14.5f)
         {
             if (Input.GetKeyUp(KeyCode.F))
             {
@@ -43,24 +43,27 @@ public class PlayerCharacterControl : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Weapon"))
+        if (other.CompareTag("Weapon") && other.GetComponent<Weapon>().state == 0)
         {
             if (Input.GetKeyUp(KeyCode.F))
             {
                 if (gameManager.timeStopValue <= 0)
                 {
                     if (playerState.weapon == null)
-                {
-                    playerState.weapon = other.gameObject;
-                }
-                else
-                {
-                    playerState.weapon.transform.position = other.gameObject.transform.position;
-                    playerState.weapon.transform.parent = null;
-                    playerState.weapon = other.gameObject;
-                }
-                other.transform.parent = playerState.weaponPoint;
-                other.transform.localPosition = new Vector3(0, 0, 0);
+                    {
+                        playerState.weapon = other.gameObject;
+                        playerState.weapon.GetComponent<Weapon>().state = 1;
+                    }
+                    else
+                    {
+                        playerState.weapon.transform.position = other.gameObject.transform.position;
+                        playerState.weapon.transform.parent = null;
+                        playerState.weapon.GetComponent<Weapon>().state = 0;
+                        playerState.weapon = other.gameObject;
+                        playerState.weapon.GetComponent<Weapon>().state = 1;
+                    }
+                    other.transform.parent = playerState.weaponPoint;
+                    other.transform.localPosition = new Vector3(0, 0, 0);
                 
                     gameManager.TimeStop();
                 }
@@ -75,7 +78,7 @@ public class PlayerCharacterControl : MonoBehaviour
         {
             playerState.weapon.transform.parent = null;
             playerState.weapon.transform.LookAt(playerState.weaponTargetPos);
-            playerState.weapon.GetComponent<Weapon>().use = true;
+            playerState.weapon.GetComponent<Weapon>().state = 2;
             playerState.weapon.GetComponent<Rigidbody>().isKinematic = false;
             playerState.weapon.GetComponent<Rigidbody>().AddForce(playerState.weapon.transform.forward * playerState.shotPower, ForceMode.Impulse);
             playerState.weapon = null;

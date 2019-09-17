@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public bool use;
+    public int state;
     
-
 
     private void OnCollisionEnter(Collision collision)
     {
       
-            if (use == true)
+            if (state == 2)
             {
             Hit();
             }
@@ -20,7 +19,7 @@ public class Weapon : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (use == true)
+        if (state == 2)
         {
 
             if (other.CompareTag("Enemy"))
