@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerCameraControl : MonoBehaviour
 {
+    GameManager gameManager;
     PlayerState playerState;
     public GameObject mainCam;
     public float camDistance;
@@ -15,6 +16,7 @@ public class PlayerCameraControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         playerState = GetComponent<PlayerState>();
     }
 
@@ -29,8 +31,8 @@ public class PlayerCameraControl : MonoBehaviour
 
     void RotateCamera()
     {
-        rotateValue.y += Input.GetAxis("Mouse X") * rotationSpeed * Time.deltaTime;
-        rotateValue.x -= Input.GetAxis("Mouse Y") * rotationSpeed * Time.deltaTime;
+        rotateValue.y += Input.GetAxis("Mouse X") * rotationSpeed * Time.fixedDeltaTime;
+        rotateValue.x -= Input.GetAxis("Mouse Y") * rotationSpeed * Time.fixedDeltaTime;
         rotateValue.x = Mathf.Clamp(rotateValue.x, -30f, 70f);
         targetRotation = Quaternion.Euler(rotateValue);
 
@@ -40,7 +42,7 @@ public class PlayerCameraControl : MonoBehaviour
 
     void CameraDistance()
     {
-        mainCam.transform.GetChild(0).localPosition = Vector3.Lerp(mainCam.transform.GetChild(0).localPosition, new Vector3(1,0, -camDistance),10*Time.deltaTime);
+        mainCam.transform.GetChild(0).localPosition = Vector3.Lerp(mainCam.transform.GetChild(0).localPosition, new Vector3(1,0, -camDistance),10* Time.fixedDeltaTime);
     }
 
     void CameraDistanceCheck()
@@ -60,13 +62,13 @@ public class PlayerCameraControl : MonoBehaviour
 
     void Zoom()
     {
-        if (Input.GetMouseButton(1) && playerState.weapon != null)
+        if (Input.GetMouseButtonDown(1) && playerState.weapon != null && gameManager.timeStopValue <= 0)
         {
             nextFOV = 30;
             playerState.state = PlayerState.State.Aim;
             crossHair.SetActive(true);
         }
-        else
+        else if(Input.GetMouseButtonUp(1) || playerState.weapon == null)
         {
             nextFOV = 60;
             playerState.state = PlayerState.State.Idle;

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerCharacterControl : MonoBehaviour
 {
+    GameManager gameManager;
     PlayerState playerState;
     public Vector2 inputValue;
     public GameObject mainCam;
@@ -12,19 +13,31 @@ public class PlayerCharacterControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         playerState = GetComponent<PlayerState>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        TimeResum();
     }
 
     void FixedUpdate()
     {
-        Jump();
         Move();
         Shot();
+    }
+
+    void TimeResum()
+    {
+        if(gameManager.timeStopValue > 0 && gameManager.timeStopValue < 15)
+        {
+            if (Input.GetKeyUp(KeyCode.F))
+            {
+                gameManager.timeStopValue = 0;
+            }
+        }
     }
 
 
@@ -32,9 +45,11 @@ public class PlayerCharacterControl : MonoBehaviour
     {
         if (other.CompareTag("Weapon"))
         {
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyUp(KeyCode.F))
             {
-                if (playerState.weapon == null)
+                if (gameManager.timeStopValue <= 0)
+                {
+                    if (playerState.weapon == null)
                 {
                     playerState.weapon = other.gameObject;
                 }
@@ -46,26 +61,17 @@ public class PlayerCharacterControl : MonoBehaviour
                 }
                 other.transform.parent = playerState.weaponPoint;
                 other.transform.localPosition = new Vector3(0, 0, 0);
+                
+                    gameManager.TimeStop();
+                }
             }
         }
     }
 
-    void Jump()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) && playerState.state != PlayerState.State.Aim)
-        {
-            RaycastHit rayHit;
-            float maxDistance = 0.5f;
-            if (Physics.Raycast(gameObject.transform.position + new Vector3(0, 0.4f, 0), Vector3.down, out rayHit, maxDistance))
-            {
-                GetComponent<Rigidbody>().AddForce(Vector3.up * playerState.jumpPower, ForceMode.Impulse);
-            }
-        }
-    }
 
     void Shot()
     {
-        if (playerState.state == PlayerState.State.Aim && Input.GetMouseButtonDown(0))
+        if (playerState.state == PlayerState.State.Aim && Input.GetMouseButtonUp(0))
         {
             playerState.weapon.transform.parent = null;
             playerState.weapon.transform.LookAt(playerState.weaponTargetPos);
@@ -123,7 +129,5 @@ public class PlayerCharacterControl : MonoBehaviour
         }
 
         Turn(gameObject, targetPos);
-        //Vector3 look = Vector3.Slerp(gameObject.transform.forward, targetPos.normalized, Time.deltaTime * playerState.rotateSpeed);
-        //gameObject.transform.rotation = Quaternion.LookRotation(look, Vector3.up);
     }
 }

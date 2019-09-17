@@ -8,12 +8,12 @@ public class PlayerState : MonoBehaviour
     public float runSpeed;
     public float aimSpeed;
     public float rotateSpeed;
-    public float jumpPower;
     public float shotPower;
     public Vector3 velocity;
     public GameObject weapon;
     public Transform weaponPoint;
     public Transform weaponTargetPos;
+    
     public enum State
     {
         Idle,
@@ -21,14 +21,5 @@ public class PlayerState : MonoBehaviour
         Aim
     }
     public State state;
-
-    private void Update()
-    {
-        velocity = GetComponent<Rigidbody>().velocity;
-        if (velocity.y > 5)
-        {
-            GetComponent<Rigidbody>().velocity = new Vector3(velocity.x, 5, velocity.z);
-            Debug.Log(velocity);
-        }
-    }
+    
 }
