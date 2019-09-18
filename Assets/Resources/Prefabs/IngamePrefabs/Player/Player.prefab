@@ -84,7 +84,6 @@ MonoBehaviour:
   runSpeed: 6
   aimSpeed: 1
   rotateSpeed: 500
-  jumpPower: 5
   shotPower: 50
   velocity: {x: 0, y: 0, z: 0}
   weapon: {fileID: 0}
