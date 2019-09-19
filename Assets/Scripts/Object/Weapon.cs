@@ -26,7 +26,7 @@ public class Weapon : MonoBehaviour
             {
                 Debug.Log("Hit:" + other.name);
                 Hit();
-                Attack();
+                Attack(other.gameObject);
             }
             else if (other.CompareTag("Wall"))
             {
@@ -40,12 +40,11 @@ public class Weapon : MonoBehaviour
 
     void Hit()
     {
-        
         gameObject.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color = new Vector4(1, 0, 0, 1);
     }
 
-    void Attack()
+    void Attack(GameObject target)
     {
-
+        target.GetComponent<Enemy>().Hit();
     }
 }
