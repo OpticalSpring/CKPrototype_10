@@ -50,7 +50,9 @@ public class PlayerCameraControl : MonoBehaviour
         RaycastHit rayHit;
         float maxDistance = 5;
         Debug.DrawRay(mainCam.transform.position, -mainCam.transform.forward * maxDistance, Color.red);
-        if (Physics.SphereCast(mainCam.transform.position,  0.1f,-mainCam.transform.forward,out rayHit, maxDistance)){
+        int mask = 1 << 9;  
+        mask = ~mask;
+        if (Physics.SphereCast(mainCam.transform.position,  0.1f,-mainCam.transform.forward,out rayHit, maxDistance, mask)){
             Vector3 hitPoint = rayHit.point;
             camDistance = Vector3.Distance(hitPoint, mainCam.transform.position) - 0.5f;
         }
