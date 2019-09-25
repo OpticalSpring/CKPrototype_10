@@ -1,17 +1,14 @@
 fileFormatVersion: 2
-guid: 19f4a77cace8c8d4c8c46db506a0e052
+guid: bee2cf62796c1264189b724679d03440
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Cylinder004
-    100002: //RootNode
-    400000: Cylinder004
-    400002: //RootNode
-    2100000: Cylinder004Mat
-    2300000: Cylinder004
-    3300000: Cylinder004
-    4300000: Cylinder004
-    2186277476908879412: ImportLogs
+    100000: //RootNode
+    400000: //RootNode
+    2100000: wire_229154215
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Object005
   externalObjects: {}
   materials:
     importMaterials: 1
