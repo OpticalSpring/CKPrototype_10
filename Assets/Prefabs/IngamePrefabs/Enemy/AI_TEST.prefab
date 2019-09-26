@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5670597442752096161}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8684712800359223907}
@@ -269,7 +269,19 @@ MonoBehaviour:
   normalSpeed: 0
   runSpeed: 0
   rotateSpeed: 0
+  searchDistance: 50
+  attackDistance: 5
   patrolPoint: {x: 0, y: 0, z: 0}
+  idleStateTime: 0
+  idleStateTimeMax: 5
+  patrolStateTime: 0
+  patrolStateTimeMax: 5
+  chaseStateTime: 0
+  chaseStateTimeMax: 5
+  attackStateTime: 0
+  attackStateTimeMax: 5
+  attackDelayTime: 0
+  attackDelayTimeMax: 5
   state: 0
 --- !u!20 &7348321699282722734
 Camera:
@@ -295,7 +307,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 26.991467
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: 0

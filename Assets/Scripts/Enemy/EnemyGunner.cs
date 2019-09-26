@@ -19,8 +19,12 @@ public class EnemyGunner : Enemy
                 base.Patrol();
                 break;
             case Enemy.State.Chase:
+                base.Chase();
                 break;
             case Enemy.State.Attack:
+                break;
+            case Enemy.State.Tracking:
+                base.Tracking();
                 break;
         }
                 base.Search();

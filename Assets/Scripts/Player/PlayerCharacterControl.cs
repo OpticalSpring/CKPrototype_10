@@ -4,23 +4,35 @@ using UnityEngine;
 
 public class PlayerCharacterControl : MonoBehaviour
 {
-    GameManager gameManager;
-    PlayerState playerState;
     public Vector2 inputValue;
     public GameObject mainCam;
     public Vector3 targetPos;
-    
+    GameManager gameManager;
+    PlayerState playerState;
+    CapsuleCollider playerCap;
+
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         playerState = GetComponent<PlayerState>();
+        playerCap = GetComponent<CapsuleCollider>();
     }
 
     // Update is called once per frame
     void Update()
     {
         TimeResum();
+        if (playerState.state == PlayerState.State.Sit)
+        {
+            playerCap.center = new Vector3(0, 0.5f, 0);
+            playerCap.height = 1;
+        }
+        else
+        {
+            playerCap.center = new Vector3(0, 1f, 0);
+            playerCap.height = 2;
+        }
     }
 
     void FixedUpdate()
@@ -71,7 +83,6 @@ public class PlayerCharacterControl : MonoBehaviour
         }
     }
 
-
     void Shot()
     {
         if (playerState.state == PlayerState.State.Aim && Input.GetMouseButtonUp(0))
@@ -101,8 +112,12 @@ public class PlayerCharacterControl : MonoBehaviour
         inputValue.x = Input.GetAxis("Horizontal");
         inputValue.y = Input.GetAxis("Vertical");
             mainCam.transform.position = gameObject.transform.position + new Vector3(0, 2, 0);
-
-        if (playerState.state == PlayerState.State.Idle)
+        
+        if (Input.GetKey(KeyCode.LeftControl))
+            {
+                playerState.state = PlayerState.State.Sit;
+            }
+        else if (playerState.state == PlayerState.State.Idle)
         {
             if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
             {
@@ -129,6 +144,10 @@ public class PlayerCharacterControl : MonoBehaviour
             targetPos = mainCam.transform.GetChild(1).transform.position;
             
             gameObject.transform.Translate(new Vector3(inputValue.x*playerState.aimSpeed * Time.deltaTime, 0, inputValue.y * playerState.aimSpeed * Time.deltaTime));
+        }
+        else if(playerState.state == PlayerState.State.Sit)
+        {
+            playerState.state = PlayerState.State.Idle;
         }
 
         Turn(gameObject, targetPos);
