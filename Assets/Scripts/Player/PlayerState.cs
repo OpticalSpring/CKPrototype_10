@@ -17,7 +17,8 @@ public class PlayerState : MonoBehaviour
     {
         Idle,
         Attack,
-        Aim
+        Aim,
+        Sit
     }
     public State state;
     

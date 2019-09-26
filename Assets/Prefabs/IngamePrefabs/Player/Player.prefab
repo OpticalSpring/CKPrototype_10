@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 440639830410785074}
-  m_Layer: 2
+  m_Layer: 9
   m_Name: WeaponPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,9 +45,9 @@ GameObject:
   - component: {fileID: 5366650022842559618}
   - component: {fileID: 4450990421359522871}
   - component: {fileID: 5366650022842559677}
-  m_Layer: 2
+  m_Layer: 9
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,7 +85,6 @@ MonoBehaviour:
   aimSpeed: 1
   rotateSpeed: 500
   shotPower: 50
-  velocity: {x: 0, y: 0, z: 0}
   weapon: {fileID: 0}
   weaponPoint: {fileID: 440639830410785074}
   weaponTargetPos: {fileID: 0}
@@ -119,7 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCam: {fileID: 0}
   camDistance: 5
-  nextFOV: 0
+  nextFOV: 60
   rotationSpeed: 100
   rotateValue: {x: 0, y: 0, z: 0}
   targetRotation: {x: 0, y: 0, z: 0, w: 0}
@@ -178,7 +177,7 @@ GameObject:
   - component: {fileID: 5366650024439040468}
   - component: {fileID: 5366650024439040475}
   - component: {fileID: 5366650024439040474}
-  m_Layer: 2
+  m_Layer: 9
   m_Name: PlayeyModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +255,7 @@ GameObject:
   - component: {fileID: 5366650024458090905}
   - component: {fileID: 5366650024458090908}
   - component: {fileID: 5366650024458090911}
-  m_Layer: 2
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

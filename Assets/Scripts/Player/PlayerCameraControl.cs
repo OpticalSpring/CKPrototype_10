@@ -70,7 +70,7 @@ public class PlayerCameraControl : MonoBehaviour
             playerState.state = PlayerState.State.Aim;
             crossHair.SetActive(true);
         }
-        else if(Input.GetMouseButtonUp(1) || playerState.weapon == null)
+        else if((Input.GetMouseButtonUp(1) || playerState.weapon == null) && playerState.state == PlayerState.State.Aim)
         {
             nextFOV = 60;
             playerState.state = PlayerState.State.Idle;
