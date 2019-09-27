@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -195,7 +195,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &2058908089
 AudioListener:
   m_ObjectHideFlags: 0
@@ -400,11 +400,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Map_cctv
-      objectReference: {fileID: 0}
-    - target: {fileID: 289107274805839001, guid: 103ae30e8cd21b04c912e9214cffaaa5,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 289107274805839005, guid: 103ae30e8cd21b04c912e9214cffaaa5,
         type: 3}
@@ -896,6 +891,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Result_Fail
+      objectReference: {fileID: 0}
+    - target: {fileID: 3110666308876029318, guid: 786e683b7cd1d874e8fed3e62167045e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3110666308876029322, guid: 786e683b7cd1d874e8fed3e62167045e,
         type: 3}

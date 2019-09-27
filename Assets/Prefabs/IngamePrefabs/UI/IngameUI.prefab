@@ -203,8 +203,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 624.4, y: -476}
-  m_SizeDelta: {x: 606.8, y: 65}
+  m_AnchoredPosition: {x: 658.7, y: -476}
+  m_SizeDelta: {x: 538.2, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &587247588495673661
 CanvasRenderer:
@@ -1094,8 +1094,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 635.1, y: -485.1}
-  m_SizeDelta: {x: 707.2, y: 73.8}
+  m_AnchoredPosition: {x: 670.3, y: -485.1}
+  m_SizeDelta: {x: 624.4, y: 73.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &587247589223784452
 CanvasRenderer:
@@ -1137,7 +1137,7 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "\uB2E4\uC2DC\uD558\uAE30 <color=#ffd800>[R]</color> \uC885\uB8CC\uD558\uAE30
-    <color=#ffd800>[ESC]</color> \uACC4\uC18D\uD558\uAE30 <color=#ffd800>[ENTER]</color>"
+    <color=#ffd800>[Q]</color> \uACC4\uC18D\uD558\uAE30 <color=#ffd800>[ESC]</color>"
 --- !u!1 &587247589291989212
 GameObject:
   m_ObjectHideFlags: 0

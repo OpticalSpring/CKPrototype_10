@@ -11086,6 +11086,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: IngameUI
       objectReference: {fileID: 0}
+    - target: {fileID: 6418389649725147083, guid: e328c223653a1474da9e434cc70d6fbb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6418389649725147079, guid: e328c223653a1474da9e434cc70d6fbb,
         type: 3}
       propertyPath: m_LocalPosition.x
