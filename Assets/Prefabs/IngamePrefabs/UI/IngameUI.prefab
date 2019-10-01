@@ -1517,7 +1517,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\uBA54\uC778\uC73C\uB85C <color=#ffd800>[ENTER]</color>"
+  m_Text: "\uBA54\uC778\uC73C\uB85C <color=#ffd800>[SPACE]</color>"
 --- !u!114 &587247589488410036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4279,7 +4279,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\uBA54\uC778\uC73C\uB85C <color=#ffd800>[ENTER]</color>"
+  m_Text: "\uBA54\uC778\uC73C\uB85C <color=#ffd800>[SPACE]</color>"
 --- !u!114 &6006390731904296206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6896,7 +6896,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2984937120477000084
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7333,7 +7333,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8389718111384142127
 RectTransform:
   m_ObjectHideFlags: 0
