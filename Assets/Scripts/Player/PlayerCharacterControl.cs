@@ -152,4 +152,11 @@ public class PlayerCharacterControl : MonoBehaviour
 
         Turn(gameObject, targetPos);
     }
+
+    public void Hit()
+    {
+        gameObject.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color = new Vector4(1, 0, 0, 1);
+        gameObject.transform.GetChild(0).parent = null;
+        Destroy(gameObject);
+    }
 }

@@ -5,18 +5,9 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     public int state;
+    public int type;
+    public int distance;
     
-
-    private void OnCollisionEnter(Collision collision)
-    {
-      
-            if (state == 2)
-            {
-            Hit();
-            }
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (state == 2)
@@ -25,26 +16,36 @@ public class Weapon : MonoBehaviour
             if (other.CompareTag("Enemy"))
             {
                 Debug.Log("Hit:" + other.name);
-                Hit();
+                Hit(gameObject.transform.position);
                 Attack(other.gameObject);
             }
             else if (other.CompareTag("Wall"))
             {
                 Debug.Log("Hit:" + other.name);
-                Hit();
+                Hit(gameObject.transform.position);
             }
 
         }
     }
 
 
-    void Hit()
+    void Hit(Vector3 hit)
     {
-        gameObject.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color = new Vector4(1, 0, 0, 1);
+        Collider[] colliderHits = Physics.OverlapSphere(hit, distance);
+
+        for(int i = 0; i < colliderHits.Length; i++)
+        {
+            if (colliderHits[i].CompareTag("Enemy"))
+            {
+                colliderHits[i].GetComponent<Enemy>().TrackingStart(hit);
+            }
+        }
+        
     }
 
     void Attack(GameObject target)
     {
-        target.GetComponent<Enemy>().Hit();
+        gameObject.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color = new Vector4(1, 0, 0, 1);
+        target.GetComponent<Enemy>().Hit(type);
     }
 }

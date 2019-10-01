@@ -80,8 +80,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4d6461ed46258b4d9496cf07cce1727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalSpeed: 3
-  runSpeed: 6
+  normalSpeed: 2
+  runSpeed: 4
   aimSpeed: 1
   rotateSpeed: 500
   shotPower: 50
