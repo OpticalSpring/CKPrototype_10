@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
     Vector3 oldPoint, target;
     int patrolState;
     GameManager gameManager;
-    GameObject player;
+    protected GameObject player;
     Camera searchCam;
     CapsuleCollider playerCap;
     NavMeshAgent agent;
@@ -182,9 +182,10 @@ public class Enemy : MonoBehaviour
 
     protected void Patrol()
     {
+        agent.stoppingDistance = 0;
         if(patrolState == 0)
         {
-            if (Vector3.Distance(gameObject.transform.position, patrolPoint) < 1)
+            if (Vector3.Distance(gameObject.transform.position, patrolPoint) < 3)
             {
                 patrolState = 1;
             }
@@ -192,7 +193,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            if (Vector3.Distance(gameObject.transform.position, oldPoint) < 1)
+            if (Vector3.Distance(gameObject.transform.position, oldPoint) < 3)
             {
                 patrolState = 0;
             }
@@ -202,14 +203,22 @@ public class Enemy : MonoBehaviour
 
     protected void Chase()
     {
+        agent.stoppingDistance = attackDistance;
         agent.SetDestination(player.transform.position);
     }
 
-    public void Hit()
+    public void Hit(int type)
     {
-        gameObject.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color = new Vector4(1, 0, 0, 1);
-        gameObject.transform.GetChild(0).parent = null;
-        Destroy(gameObject);
+        if (type == colorType)
+        {
+            gameObject.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color = new Vector4(1, 0, 0, 1);
+            gameObject.transform.GetChild(0).parent = null;
+            Destroy(gameObject);
+        }
+        else
+        {
+
+        }
     }
 
     protected void TimeStopState()

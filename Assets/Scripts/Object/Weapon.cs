@@ -5,8 +5,9 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     public int state;
+    public int type;
     public int distance;
-
+    
     private void OnTriggerEnter(Collider other)
     {
         if (state == 2)
@@ -45,6 +46,6 @@ public class Weapon : MonoBehaviour
     void Attack(GameObject target)
     {
         gameObject.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color = new Vector4(1, 0, 0, 1);
-        target.GetComponent<Enemy>().Hit();
+        target.GetComponent<Enemy>().Hit(type);
     }
 }

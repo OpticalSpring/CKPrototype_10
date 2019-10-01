@@ -5640,6 +5640,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: IngameUI
       objectReference: {fileID: 0}
+    - target: {fileID: 6418389648972890758, guid: e328c223653a1474da9e434cc70d6fbb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6418389649725147079, guid: e328c223653a1474da9e434cc70d6fbb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5743,11 +5748,6 @@ PrefabInstance:
     - target: {fileID: 6418389649725147079, guid: e328c223653a1474da9e434cc70d6fbb,
         type: 3}
       propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6418389648972890758, guid: e328c223653a1474da9e434cc70d6fbb,
-        type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9051054345367747004, guid: e328c223653a1474da9e434cc70d6fbb,
@@ -7819,6 +7819,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8684712800359223908, guid: 9ce7179f26c548c4f90ab1118017ba81,
+        type: 3}
+      propertyPath: attackDelayTimeMax
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ce7179f26c548c4f90ab1118017ba81, type: 3}
