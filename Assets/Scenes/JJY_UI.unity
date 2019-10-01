@@ -401,6 +401,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Map_cctv
       objectReference: {fileID: 0}
+    - target: {fileID: 289107274805839001, guid: 103ae30e8cd21b04c912e9214cffaaa5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 289107274805839005, guid: 103ae30e8cd21b04c912e9214cffaaa5,
         type: 3}
       propertyPath: m_LocalPosition.x
