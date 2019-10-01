@@ -2,12 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyGunner : Enemy
+public class EnemyCloseType : Enemy
 {
-    public GameObject bullet;
-    public GameObject bulletStartPoint;
 
-    // Update is called once per frame
     void Update()
     {
         base.TimeStopState();
@@ -27,15 +24,12 @@ public class EnemyGunner : Enemy
                 base.Tracking();
                 break;
         }
-                base.Search();
+        base.Search();
     }
 
-    protected override void Attack() 
+
+    protected override void Attack()
     {
-        GameObject temp = Instantiate(bullet);
-        temp.transform.position = bulletStartPoint.transform.position;
-        temp.transform.rotation = bulletStartPoint.transform.rotation;
+        
     }
-
-    
 }

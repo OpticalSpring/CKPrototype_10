@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour
     GameObject player;
     Camera searchCam;
     CapsuleCollider playerCap;
+    NavMeshAgent agent;
     public enum State
     {
         Idle,
@@ -43,6 +44,7 @@ public class Enemy : MonoBehaviour
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         searchCam = GetComponent<Camera>();
         oldPoint = gameObject.transform.position;
+        agent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
@@ -65,15 +67,9 @@ public class Enemy : MonoBehaviour
                 {
                     switch (state)
                     {
-                        case State.Idle:
-                            idleStateTime += Time.deltaTime;
-                            if (idleStateTime > idleStateTimeMax)
-                            {
-                                idleStateTime = 0;
-                                state = State.Chase;
-                            }
-                            break;
                         case State.Patrol:
+                        case State.Tracking:
+                            agent.speed = normalSpeed;
                             patrolStateTime += Time.deltaTime;
                             if (patrolStateTime > patrolStateTimeMax)
                             {
@@ -82,6 +78,7 @@ public class Enemy : MonoBehaviour
                             }
                             break;
                         case State.Chase:
+                            agent.speed = runSpeed;
                             if (chaseStateTime > 0)
                             {
                                 chaseStateTime -= Time.deltaTime;
@@ -105,6 +102,12 @@ public class Enemy : MonoBehaviour
                                 attackDelayTime = 0;
                                 Attack();
                             }
+
+                            if (Vector3.Distance(gameObject.transform.position, player.transform.position) > attackDistance)
+                            {
+                                attackStateTime = 0;
+                                state = State.Chase;
+                            }
                             break;
                     }
                 }
@@ -121,19 +124,18 @@ public class Enemy : MonoBehaviour
 
         switch (state)
         {
-            case State.Idle:
-                if (idleStateTime > 0)
-                {
-                    idleStateTime -= Time.deltaTime;
-                }
-                break;
             case State.Patrol:
+            case State.Tracking:
+                agent.speed = normalSpeed;
+
                 if (patrolStateTime > 0)
                 {
                     patrolStateTime -= Time.deltaTime;
                 }
                 break;
             case State.Chase:
+                agent.speed = runSpeed;
+
                 chaseStateTime += Time.deltaTime;
                 if (chaseStateTime > chaseStateTimeMax)
                 {
@@ -142,6 +144,8 @@ public class Enemy : MonoBehaviour
                 }
                 break;
             case State.Attack:
+                agent.speed = 0;
+
                 attackStateTime += Time.deltaTime;
                 if (attackStateTime > attackStateTimeMax)
                 {
@@ -157,22 +161,23 @@ public class Enemy : MonoBehaviour
 
     public void TrackingStart(Vector3 target)
     {
-        state = State.Tracking;
-        this.target = target;
+        if (state == State.Patrol)
+        {
+            state = State.Tracking;
+            target.y = 0;
+            this.target = target;
+            agent.SetDestination(target);
+        }
     }
 
-    protected virtual void Attack()
-    {
-        Debug.Log("Attack");
-    }
+    protected virtual void Attack() { }
 
     protected void Tracking()
     {
-        if (Vector3.Distance(gameObject.transform.position, target) < 1)
+        if (Vector3.Distance(gameObject.transform.position, target) < 3)
         {
             state = State.Patrol;
         }
-            GetComponent<NavMeshAgent>().SetDestination(target);
     }
 
     protected void Patrol()
@@ -183,7 +188,7 @@ public class Enemy : MonoBehaviour
             {
                 patrolState = 1;
             }
-            GetComponent<NavMeshAgent>().SetDestination(patrolPoint);
+            agent.SetDestination(patrolPoint);
         }
         else
         {
@@ -191,13 +196,13 @@ public class Enemy : MonoBehaviour
             {
                 patrolState = 0;
             }
-            GetComponent<NavMeshAgent>().SetDestination(oldPoint);
+            agent.SetDestination(oldPoint);
         }
     }
 
     protected void Chase()
     {
-        GetComponent<NavMeshAgent>().SetDestination(player.transform.position);
+        agent.SetDestination(player.transform.position);
     }
 
     public void Hit()

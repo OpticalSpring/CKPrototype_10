@@ -21,6 +21,7 @@ public class EnemyUI : MonoBehaviour
         switch (enemy.state)
         {
             case Enemy.State.Patrol:
+            case Enemy.State.Tracking:
                 if (enemy.patrolStateTime > 0)
                 {
                     UIObject.SetActive(true);
