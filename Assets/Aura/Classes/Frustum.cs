@@ -180,7 +180,7 @@ namespace AuraAPI
                     _processOcclusionMapMaterial = new Material(_processOcclusionMapShader);
                 }
                 _processOcclusionMapMaterial.SetVector("bufferResolution", _resolutionVector);
-                Graphics.Blit(_buffers.OcclusionTexture.ReadBuffer, _buffers.OcclusionTexture.WriteBuffer, _processOcclusionMapMaterial);
+                Graphics.Blit(_buffers.OcclusionTexture.ReadBuffer, dest: _buffers.OcclusionTexture.WriteBuffer, _processOcclusionMapMaterial);
                 _buffers.OcclusionTexture.Swap();
 
                 _computeDataComputeShader.SetTexture(settings.GetId(), "occlusionTexture", _buffers.OcclusionTexture.ReadBuffer); // TODO : USE EVENT TO SET TEXTURES
