@@ -64,9 +64,8 @@ public class Enemy : MonoBehaviour
                 Patrol();
                 break;
             case Enemy.State.Chase:
-                Chase();
-                break;
             case Enemy.State.Attack:
+                Chase();
                 break;
             case Enemy.State.Tracking:
                 Tracking();
@@ -100,6 +99,7 @@ public class Enemy : MonoBehaviour
                             }
                             break;
                         case State.Chase:
+                            agent.stoppingDistance = attackDistance-2;
                             agent.speed = runSpeed;
                             if (chaseStateTime > 0)
                             {
@@ -112,6 +112,7 @@ public class Enemy : MonoBehaviour
                             }
                             break;
                         case State.Attack:
+                            agent.speed = 0;
                             gameObject.transform.LookAt(player.transform.position);
                             if (attackStateTime > 0)
                             {
@@ -144,6 +145,7 @@ public class Enemy : MonoBehaviour
     void StateChange()
     {
 
+                agent.stoppingDistance = 0;
         switch (state)
         {
             case State.Patrol:
@@ -157,7 +159,6 @@ public class Enemy : MonoBehaviour
                 break;
             case State.Chase:
                 agent.speed = runSpeed;
-
                 chaseStateTime += Time.deltaTime;
                 if (chaseStateTime > chaseStateTimeMax)
                 {
@@ -166,11 +167,12 @@ public class Enemy : MonoBehaviour
                 }
                 break;
             case State.Attack:
-                agent.speed = 0;
+                agent.speed = runSpeed;
 
                 attackStateTime += Time.deltaTime;
                 if (attackStateTime > attackStateTimeMax)
                 {
+                    attackStateTime = 0;
                     state = State.Patrol;
                 }
                 if (attackDelayTime > 0)
@@ -225,7 +227,6 @@ public class Enemy : MonoBehaviour
 
     protected void Chase()
     {
-        agent.stoppingDistance = attackDistance;
         agent.SetDestination(player.transform.position);
     }
 
@@ -233,13 +234,14 @@ public class Enemy : MonoBehaviour
     {
         if (type == colorType)
         {
+            Debug.Log("TRUETYPE");
             gameObject.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color = new Vector4(1, 0, 0, 1);
             gameObject.transform.GetChild(0).parent = null;
             Destroy(gameObject);
         }
         else
         {
-
+            Debug.Log("NOTYPE"+type+","+colorType);
         }
     }
 
@@ -253,10 +255,10 @@ public class Enemy : MonoBehaviour
                     colorObj.GetComponent<MeshRenderer>().material.color = new Vector4(1, 0, 0, 1);
                     break;
                 case 1:
-                    colorObj.GetComponent<MeshRenderer>().material.color = new Vector4(0, 0, 1, 1);
+                    colorObj.GetComponent<MeshRenderer>().material.color = new Vector4(0, 1, 0, 1);
                     break;
                 case 2:
-                    colorObj.GetComponent<MeshRenderer>().material.color = new Vector4(0, 1, 0, 1);
+                    colorObj.GetComponent<MeshRenderer>().material.color = new Vector4(0, 0, 1, 1);
                     break;
             }
         }

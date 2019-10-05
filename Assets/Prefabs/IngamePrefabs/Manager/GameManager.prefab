@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9006349554920864427}
   - component: {fileID: 9006349554920864426}
   - component: {fileID: 490575583}
+  - component: {fileID: 3818876926307543453}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -45,6 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeStopValue: 0
+  playTime_a: 0
+  playTime_b: 0
+  playTime_c: 0
+  playTime_d: 0
 --- !u!114 &490575583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,4 +62,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a06f925292dd8f74998fa53db060474e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeUI: {fileID: 0}
+  timeUI: {fileID: 0}
+  timeText:
+  - {fileID: 0}
+  - {fileID: 0}
+  enemyType: {fileID: 0}
+--- !u!114 &3818876926307543453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9006349554920864425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ff19d64568a55142bf9f052667969c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pause: 0
+  pauseObject: {fileID: 0}

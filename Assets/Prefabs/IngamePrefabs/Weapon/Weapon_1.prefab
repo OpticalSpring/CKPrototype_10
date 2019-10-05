@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 853339115347478533}
   - component: {fileID: 1572646912549531885}
   - component: {fileID: 1075666645920578588}
-  - component: {fileID: 8205558425301039170}
+  - component: {fileID: 595959408749980508}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -156,7 +156,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &8205558425301039170
+--- !u!114 &595959408749980508
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,10 +165,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4741882105905021407}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: 1
-  eraseRenderer: 0
-  originalLayer: 0
-  originalMaterials: []
+  outlineMode: 1
+  outlineColor: {r: 0, g: 1, b: 0, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

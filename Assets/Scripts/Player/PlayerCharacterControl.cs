@@ -93,16 +93,33 @@ public class PlayerCharacterControl : MonoBehaviour
             playerState.weapon.GetComponent<Rigidbody>().isKinematic = false;
             playerState.weapon.GetComponent<Rigidbody>().AddForce(playerState.weapon.transform.forward * playerState.shotPower, ForceMode.Impulse);
             playerState.weapon = null;
+        }else if (Input.GetMouseButtonUp(0))
+        {
+
+            Collider[] colliderHits = Physics.OverlapSphere(playerState.weaponPoint.position, 3);
+            int count = 0;
+            for (int i = 0; i < colliderHits.Length; i++)
+            {
+                if (colliderHits[i].CompareTag("Enemy"))
+                {
+                    playerState.weapon.GetComponent<Weapon>().Attack(colliderHits[i].gameObject);
+                    count++;
+                }
+            }
+            if (count > 0)
+            {
+                playerState.weapon.GetComponent<Weapon>().Hit(playerState.weaponPoint.position);
+            }
         }
     }
-    void Turn(GameObject obj, Vector3 target)
+    void Turn(GameObject obj, Vector3 target, float speed)
     {
         float dz = target.z - obj.transform.position.z;
         float dx = target.x - obj.transform.position.x;
 
         float rotateDegree = Mathf.Atan2(dx, dz) * Mathf.Rad2Deg;
         
-            obj.transform.rotation = Quaternion.RotateTowards(obj.transform.rotation, Quaternion.Euler(0, rotateDegree, 0), playerState.rotateSpeed * Time.deltaTime);
+            obj.transform.rotation = Quaternion.RotateTowards(obj.transform.rotation, Quaternion.Euler(0, rotateDegree, 0), speed * Time.deltaTime);
         
     }
 
@@ -128,11 +145,13 @@ public class PlayerCharacterControl : MonoBehaviour
                 targetPos = mainCam.transform.GetChild(1).transform.position;
 
                 if (Input.GetKey(KeyCode.LeftShift)) {
-                    gameObject.transform.Translate(Vector3.forward * playerState.runSpeed * Time.deltaTime);
+                    // gameObject.transform.Translate(Vector3.forward * playerState.runSpeed * Time.deltaTime);
+                    gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, targetPos, playerState.runSpeed * Time.deltaTime);
                 }
                 else
                 {
-                gameObject.transform.Translate(Vector3.forward * playerState.normalSpeed * Time.deltaTime);
+               // gameObject.transform.Translate(Vector3.forward * playerState.normalSpeed * Time.deltaTime);
+                    gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, targetPos, playerState.normalSpeed * Time.deltaTime);
                 }
             }
         }else if(playerState.state == PlayerState.State.Aim)
@@ -142,15 +161,16 @@ public class PlayerCharacterControl : MonoBehaviour
             targetY.y = gameObject.transform.position.y;
             mainCam.transform.GetChild(1).transform.position = targetY;
             targetPos = mainCam.transform.GetChild(1).transform.position;
-            
-            gameObject.transform.Translate(new Vector3(inputValue.x*playerState.aimSpeed * Time.deltaTime, 0, inputValue.y * playerState.aimSpeed * Time.deltaTime));
+            //Vector3 newAimPos = inputValue.x * playerState.aimSpeed * Time.deltaTime, 0, inputValue.y * playerState.aimSpeed * Time.deltaTime;
+            //gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, targetPos, playerState.aimSpeed * Time.deltaTime);
+            gameObject.transform.Translate(new Vector3(-inputValue.x * playerState.aimSpeed * Time.deltaTime, 0, -inputValue.y * playerState.aimSpeed * Time.deltaTime));
         }
         else if(playerState.state == PlayerState.State.Sit)
         {
             playerState.state = PlayerState.State.Idle;
         }
-
-        Turn(gameObject, targetPos);
+        Turn(gameObject, mainCam.transform.GetChild(0).transform.position, 10000);
+        Turn(gameObject.transform.GetChild(0).gameObject, targetPos, playerState.rotateSpeed);
     }
 
     public void Hit()

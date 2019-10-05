@@ -746,7 +746,7 @@ MonoBehaviour:
   attackStateTime: 0
   attackStateTimeMax: 5
   attackDelayTime: 0
-  attackDelayTimeMax: 5
+  attackDelayTimeMax: 3
   state: 1
   bullet: {fileID: 2953450683916246695, guid: a02fac7a14d172e4883866630e8c4f45, type: 3}
   bulletStartPoint: {fileID: 8684712799815206725}
@@ -803,7 +803,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3
-  m_Acceleration: 100
+  m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 720
   m_StoppingDistance: 18

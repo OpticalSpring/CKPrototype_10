@@ -2,11 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Weapon : MonoBehaviour
 {
     public int state;
     public int type;
     public int distance;
+    GameManager gameManager;
+
+    private void Start()
+    {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
+
+    private void Update()
+    {
+        if(gameManager.timeStopValue > 0)
+        {
+            gameObject.transform.GetChild(0).gameObject.GetComponent<Outline>().OutlineWidth = 2;
+        }
+        else
+        {
+            gameObject.transform.GetChild(0).gameObject.GetComponent<Outline>().OutlineWidth = 0;
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -29,7 +48,7 @@ public class Weapon : MonoBehaviour
     }
 
 
-    void Hit(Vector3 hit)
+    public void Hit(Vector3 hit)
     {
         Collider[] colliderHits = Physics.OverlapSphere(hit, distance);
 
@@ -43,7 +62,7 @@ public class Weapon : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void Attack(GameObject target)
+    public void Attack(GameObject target)
     {
         gameObject.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color = new Vector4(1, 0, 0, 1);
         target.GetComponent<Enemy>().Hit(type);
