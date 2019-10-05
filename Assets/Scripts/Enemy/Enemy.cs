@@ -45,12 +45,34 @@ public class Enemy : MonoBehaviour
         searchCam = GetComponent<Camera>();
         oldPoint = gameObject.transform.position;
         agent = GetComponent<NavMeshAgent>();
+        colorType = Random.Range(0, 3);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(player == null)
+        {
+            return;
+        }
+        TimeStopState();
+        switch (state)
+        {
+            case Enemy.State.Idle:
+                break;
+            case Enemy.State.Patrol:
+                Patrol();
+                break;
+            case Enemy.State.Chase:
+                Chase();
+                break;
+            case Enemy.State.Attack:
+                break;
+            case Enemy.State.Tracking:
+                Tracking();
+                break;
+        }
+        Search();
     }
 
     protected void Search()

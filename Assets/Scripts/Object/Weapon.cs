@@ -7,7 +7,7 @@ public class Weapon : MonoBehaviour
     public int state;
     public int type;
     public int distance;
-    
+
     private void OnTriggerEnter(Collider other)
     {
         if (state == 2)
@@ -16,8 +16,8 @@ public class Weapon : MonoBehaviour
             if (other.CompareTag("Enemy"))
             {
                 Debug.Log("Hit:" + other.name);
-                Hit(gameObject.transform.position);
                 Attack(other.gameObject);
+                Hit(gameObject.transform.position);
             }
             else if (other.CompareTag("Wall"))
             {
@@ -40,7 +40,7 @@ public class Weapon : MonoBehaviour
                 colliderHits[i].GetComponent<Enemy>().TrackingStart(hit);
             }
         }
-        
+        Destroy(gameObject);
     }
 
     void Attack(GameObject target)
