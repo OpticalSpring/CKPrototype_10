@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8292683394054418204}
   - component: {fileID: 8292683394053091132}
   - component: {fileID: 8292683394052124156}
+  - component: {fileID: 1178390341362127842}
   m_Layer: 0
   m_Name: obj_bartable
   m_TagString: Untagged
@@ -77,3 +78,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &1178390341362127842
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8292683394054320956}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.89805186, y: 1.0000002, z: 1.0000002}
+  m_Center: {x: 0.000000059604645, y: 0, z: 0}
