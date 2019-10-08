@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6785278611082711368}
   - component: {fileID: 6785278611082711367}
   - component: {fileID: 2585681110847252381}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Weapon_1
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 1572646912549531885}
   - component: {fileID: 1075666645920578588}
   - component: {fileID: 595959408749980508}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -21,5 +21,7 @@ public class PlayerState : MonoBehaviour
         Sit
     }
     public State state;
-    
+
+
+   
 }
