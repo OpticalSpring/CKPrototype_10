@@ -9,9 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/TitleScene.unity
     guid: 6486deb0ee7f9c74384e09cc227b993b
   - enabled: 1
-    path: Assets/Scenes/Object_place.unity
-    guid: 6c7618c2a63f08f44b3bff696255c1af
-  - enabled: 1
     path: Assets/Scenes/PSJ_WorkPlace.unity
     guid: 56a83fdcdf448c1459f8fd5a14fc642c
+  - enabled: 1
+    path: Assets/Scenes/Object_place.unity
+    guid: 6c7618c2a63f08f44b3bff696255c1af
   m_configObjects: {}
