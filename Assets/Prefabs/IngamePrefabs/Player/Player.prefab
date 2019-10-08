@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 5366650022842559676}
   - component: {fileID: 5366650022842559679}
   - component: {fileID: 5366650022842559673}
+  - component: {fileID: 3943915909809212728}
   - component: {fileID: 5366650022842559618}
   - component: {fileID: 4450990421359522871}
   - component: {fileID: 5366650022842559677}
@@ -122,6 +123,21 @@ MonoBehaviour:
   rotateValue: {x: 0, y: 0, z: 0}
   targetRotation: {x: 0, y: 0, z: 0, w: 0}
   crossHair: {fileID: 0}
+--- !u!114 &3943915909809212728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5366650022842559672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d7f262813170d243956ecd72005d4c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aniState: 0
+  movement: 0
+  movement_s: 0
 --- !u!136 &5366650022842559618
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -249,10 +265,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5366650022842559678}
     m_Modifications:
-    - target: {fileID: 100000, guid: 207e3a3433fe8da4d994e9b45e85e35c, type: 3}
-      propertyPath: m_Name
-      value: Ani_sitting
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 207e3a3433fe8da4d994e9b45e85e35c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -296,6 +308,10 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 207e3a3433fe8da4d994e9b45e85e35c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 207e3a3433fe8da4d994e9b45e85e35c, type: 3}
+      propertyPath: m_Name
+      value: Ani_sitting
       objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: 207e3a3433fe8da4d994e9b45e85e35c, type: 3}
       propertyPath: m_Controller
