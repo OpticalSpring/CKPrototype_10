@@ -94,6 +94,7 @@ public class PlayerCharacterControl : MonoBehaviour
         playerState.weapon.GetComponent<Rigidbody>().isKinematic = false;
         playerState.weapon.GetComponent<Rigidbody>().AddForce(playerState.weapon.transform.forward * playerState.shotPower, ForceMode.Impulse);
         playerState.weapon = null;
+        
     }
     bool shoting;
 
@@ -102,7 +103,7 @@ public class PlayerCharacterControl : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         AniShot();
         shoting = false;
-
+        GameObject.Find("SoundManager").GetComponent<SoundManager>().SoundPlay(1, 1);
     }
 
     void Shot()
@@ -129,6 +130,7 @@ public class PlayerCharacterControl : MonoBehaviour
             if (count > 0)
             {
                 playerState.weapon.GetComponent<Weapon>().Hit(playerState.weaponPoint.position);
+                GameObject.Find("SoundManager").GetComponent<SoundManager>().SoundPlay(1, 0);
             }
         }
     }

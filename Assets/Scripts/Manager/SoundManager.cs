@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public GameObject target;
-    public GameObject player;
-
-    private void Start()
-    {
-        player = GameObject.Find("Player");
-    }
     
+    public void SoundIns(int i, int j, Vector3 pos)
+    {
+        GameObject temp = Instantiate(gameObject.transform.GetChild(i).GetChild(j).gameObject);
+        temp.transform.position = pos;
+        temp.GetComponent<AudioSource>().Play();
+        Destroy(temp, 10);
+    }
 
     public void SoundPlay(int i, int j)
     {

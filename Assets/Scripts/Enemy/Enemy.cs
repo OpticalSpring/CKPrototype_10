@@ -237,6 +237,7 @@ public class Enemy : MonoBehaviour
             Debug.Log("TRUETYPE");
             gameObject.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color = new Vector4(1, 0, 0, 1);
             gameObject.transform.GetChild(0).parent = null;
+            GameObject.Find("SoundManager").GetComponent<SoundManager>().SoundIns(4, 5,gameObject.transform.position);
             Destroy(gameObject);
         }
         else

@@ -50,6 +50,7 @@ public class Weapon : MonoBehaviour
 
     public void Hit(Vector3 hit)
     {
+        GameObject.Find("SoundManager").GetComponent<SoundManager>().SoundIns(2, type, gameObject.transform.position);
         Collider[] colliderHits = Physics.OverlapSphere(hit, distance);
 
         for (int i = 0; i < colliderHits.Length; i++)

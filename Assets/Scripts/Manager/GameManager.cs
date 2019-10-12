@@ -25,6 +25,14 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         pauseManager = GetComponent<PauseManager>();
         player = GameObject.Find("Player");
+        if(gameStart == false)
+        {
+            GameObject.Find("SoundManager").GetComponent<SoundManager>().SoundPlay(0, 1);
+        }
+        else
+        {
+            GameObject.Find("SoundManager").GetComponent<SoundManager>().SoundPlay(0, 2);
+        }
     }
 
     // Update is called once per frame
@@ -133,15 +141,19 @@ public class GameManager : MonoBehaviour
 
     IEnumerator CameraSet()
     {
-        for (int i = 0; i < 300; i++)
+
+        for (int i = 0; i < 200; i++)
         {
-            mainCam.transform.position = Vector3.Lerp(mainCam.transform.position, cameraStartingPoint, Time.deltaTime);
+            mainCam.transform.position = Vector3.Lerp(mainCam.transform.position, cameraStartingPoint, Time.deltaTime*2);
             Debug.Log(mainCam.transform.localEulerAngles);
             mainCam.transform.localEulerAngles = Vector3.Lerp(mainCam.transform.localEulerAngles, new Vector3(0, 360, 0), Time.deltaTime);
             yield return new WaitForSeconds(0.01f);
         }
+        GameObject.Find("SoundManager").GetComponent<SoundManager>().SoundStop(0, 1);
         player.GetComponent<PlayerCameraControl>().enabled = true;
         player.GetComponent<PlayerCharacterControl>().enabled = true;
+        yield return new WaitForSeconds(1f);
+        GameObject.Find("SoundManager").GetComponent<SoundManager>().SoundPlay(0, 2);
 
     }
 }
