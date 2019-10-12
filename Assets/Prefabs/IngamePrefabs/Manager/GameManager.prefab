@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9006349554920864426}
   - component: {fileID: 490575583}
   - component: {fileID: 3818876926307543453}
+  - component: {fileID: 2553923334498635858}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -50,6 +51,16 @@ MonoBehaviour:
   playTime_b: 0
   playTime_c: 0
   playTime_d: 0
+  gameStart: 0
+  startingUI: []
+  player: {fileID: 0}
+  mainCam: {fileID: 0}
+  cameraStartingPoint: {x: 0, y: 0, z: 0}
+  gameOver: 0
+  gameClear: 0
+  gameOverUI: {fileID: 0}
+  gameClearUI: {fileID: 0}
+  lightObject: {fileID: 0}
 --- !u!114 &490575583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,6 +78,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   enemyType: {fileID: 0}
+  weaponType: {fileID: 0}
 --- !u!114 &3818876926307543453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,3 +93,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pause: 0
   pauseObject: {fileID: 0}
+--- !u!114 &2553923334498635858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9006349554920864425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d81ee2cd9a6776440ad79025ef64ff28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fText:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  cText:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  rValue: 0000000000000000000000000000000000000000

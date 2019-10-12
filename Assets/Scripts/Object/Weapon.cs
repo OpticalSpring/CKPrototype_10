@@ -38,6 +38,7 @@ public class Weapon : MonoBehaviour
                 Debug.Log("Hit:" + other.name);
                 Attack(other.gameObject);
                 Hit(gameObject.transform.position);
+                GameObject.Find("GameManager").GetComponent<ResultManager>().R4Count();
             }
             else if (other.CompareTag("Wall"))
             {
@@ -50,6 +51,7 @@ public class Weapon : MonoBehaviour
 
     public void Hit(Vector3 hit)
     {
+        GameObject.Find("GameManager").GetComponent<ResultManager>().R1Count();
         GameObject.Find("SoundManager").GetComponent<SoundManager>().SoundIns(2, type, gameObject.transform.position);
         Collider[] colliderHits = Physics.OverlapSphere(hit, distance);
 

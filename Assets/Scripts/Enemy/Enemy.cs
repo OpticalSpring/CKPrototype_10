@@ -124,6 +124,7 @@ public class Enemy : MonoBehaviour
                             {
                                 attackDelayTime = 0;
                                 Attack();
+                                GameObject.Find("GameManager").GetComponent<ResultManager>().R2Count();
                             }
 
                             if (Vector3.Distance(gameObject.transform.position, player.transform.position) > attackDistance)
@@ -234,6 +235,7 @@ public class Enemy : MonoBehaviour
     {
         if (type == colorType)
         {
+            GameObject.Find("GameManager").GetComponent<ResultManager>().R0Count();
             Debug.Log("TRUETYPE");
             gameObject.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color = new Vector4(1, 0, 0, 1);
             gameObject.transform.GetChild(0).parent = null;

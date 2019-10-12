@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public bool gameClear;
     public GameObject gameOverUI;
     public GameObject gameClearUI;
+    public GameObject lightObject;
     // Start is called before the first frame update
     void Start()
     {
@@ -85,6 +86,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);
         gameOverUI.SetActive(true);
+        GetComponent<ResultManager>().Fail();
         Time.timeScale = 0;
     }
     void TimeStopDecrease()
@@ -148,6 +150,10 @@ public class GameManager : MonoBehaviour
             Debug.Log(mainCam.transform.localEulerAngles);
             mainCam.transform.localEulerAngles = Vector3.Lerp(mainCam.transform.localEulerAngles, new Vector3(0, 360, 0), Time.deltaTime);
             yield return new WaitForSeconds(0.01f);
+            if(i == 40)
+            {
+                lightObject.SetActive(true);
+            }
         }
         GameObject.Find("SoundManager").GetComponent<SoundManager>().SoundStop(0, 1);
         player.GetComponent<PlayerCameraControl>().enabled = true;
