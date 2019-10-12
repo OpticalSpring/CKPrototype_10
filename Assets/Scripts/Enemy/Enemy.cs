@@ -82,7 +82,7 @@ public class Enemy : MonoBehaviour
         {
             Debug.DrawRay(gameObject.transform.GetChild(1).position, gameObject.transform.GetChild(1).forward * searchDistance, Color.red);
             RaycastHit rayHit;
-            if (Physics.Raycast(gameObject.transform.GetChild(1).position, gameObject.transform.GetChild(1).forward * searchDistance, out rayHit))
+            if (Physics.Raycast(gameObject.transform.GetChild(1).position, gameObject.transform.GetChild(1).forward * searchDistance, out rayHit, searchDistance))
             {
                 if (rayHit.collider.CompareTag("Player"))
                 {
