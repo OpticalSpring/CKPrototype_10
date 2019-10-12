@@ -95,20 +95,23 @@ public class PlayerCharacterControl : MonoBehaviour
         playerState.weapon.GetComponent<Rigidbody>().AddForce(playerState.weapon.transform.forward * playerState.shotPower, ForceMode.Impulse);
         playerState.weapon = null;
     }
+    bool shoting;
 
     IEnumerator DelayShot()
     {
         yield return new WaitForSeconds(0.2f);
         AniShot();
+        shoting = false;
 
     }
 
     void Shot()
     {
-        if (playerState.state == PlayerState.State.Aim && Input.GetMouseButtonUp(0))
+        if (playerState.state == PlayerState.State.Aim && Input.GetMouseButtonUp(0) && shoting == false)
         {
             playerAni.aniState = 3;
             StartCoroutine("DelayShot");
+            shoting = true;
         }
         else if (Input.GetMouseButtonUp(0) && playerState.weapon != null)
         {
@@ -201,7 +204,8 @@ public class PlayerCharacterControl : MonoBehaviour
 
     public void Hit()
     {
-        gameObject.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color = new Vector4(1, 0, 0, 1);
+        //gameObject.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color = new Vector4(1, 0, 0, 1);
+        playerAni.ani.SetInteger("AniState", 10);
         gameObject.transform.GetChild(0).parent = null;
         Destroy(gameObject);
     }

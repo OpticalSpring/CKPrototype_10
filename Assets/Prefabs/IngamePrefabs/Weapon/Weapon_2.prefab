@@ -78,6 +78,7 @@ MonoBehaviour:
   state: 0
   type: 2
   distance: 50
+  effect: {fileID: 5101748006055998929, guid: f9566686dec7c0440898aee66661e478, type: 3}
 --- !u!1 &6531053734874340978
 GameObject:
   m_ObjectHideFlags: 0

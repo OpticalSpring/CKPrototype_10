@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerAniControl : MonoBehaviour
 {
-    Animator ani;
+    public Animator ani;
     public int aniState;
     public float movement;
     public float movement_s;

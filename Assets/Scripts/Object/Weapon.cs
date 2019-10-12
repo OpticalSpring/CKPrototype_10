@@ -9,6 +9,7 @@ public class Weapon : MonoBehaviour
     public int type;
     public int distance;
     GameManager gameManager;
+    public GameObject effect;
 
     private void Start()
     {
@@ -17,7 +18,7 @@ public class Weapon : MonoBehaviour
 
     private void Update()
     {
-        if(gameManager.timeStopValue > 0)
+        if (gameManager.timeStopValue > 0)
         {
             gameObject.transform.GetChild(0).gameObject.GetComponent<Outline>().OutlineWidth = 2;
         }
@@ -43,7 +44,6 @@ public class Weapon : MonoBehaviour
                 Debug.Log("Hit:" + other.name);
                 Hit(gameObject.transform.position);
             }
-
         }
     }
 
@@ -52,13 +52,19 @@ public class Weapon : MonoBehaviour
     {
         Collider[] colliderHits = Physics.OverlapSphere(hit, distance);
 
-        for(int i = 0; i < colliderHits.Length; i++)
+        for (int i = 0; i < colliderHits.Length; i++)
         {
             if (colliderHits[i].CompareTag("Enemy"))
             {
                 colliderHits[i].GetComponent<Enemy>().TrackingStart(hit);
             }
         }
+        GameObject player = GameObject.Find("Player");
+        GameObject temp = Instantiate(effect);
+        temp.transform.position = gameObject.transform.position;
+        temp.transform.position += new Vector3(0, 1f, 0);
+        temp.transform.LookAt(player.transform.position + new Vector3(0, 1, 0));
+        Destroy(temp, 10);
         Destroy(gameObject);
     }
 
