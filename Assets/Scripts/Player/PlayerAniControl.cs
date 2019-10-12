@@ -8,6 +8,8 @@ public class PlayerAniControl : MonoBehaviour
     public int aniState;
     public float movement;
     public float movement_s;
+    public float horizontal;
+    public float vertical;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,5 +33,7 @@ public class PlayerAniControl : MonoBehaviour
     {
         ani.SetInteger("AniState", aniState);
         ani.SetFloat("Movement", movement_s);
+        ani.SetFloat("Horizontal",horizontal);
+        ani.SetFloat("Vertical", vertical);
     }
 }

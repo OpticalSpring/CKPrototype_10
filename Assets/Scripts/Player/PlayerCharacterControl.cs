@@ -148,6 +148,8 @@ public class PlayerCharacterControl : MonoBehaviour
         mainCam.transform.position = gameObject.transform.position + new Vector3(0, 2, 0);
         playerAni.movement = 0;
         playerAni.aniState = 0;
+        playerAni.horizontal = inputValue.x;
+        playerAni.vertical = inputValue.y;
         if (Input.GetKey(KeyCode.LeftControl))
         {
             playerAni.aniState = 1;

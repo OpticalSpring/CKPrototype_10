@@ -82,7 +82,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalSpeed: 2
   runSpeed: 4
-  aimSpeed: 1
+  aimSpeed: 0.5
   rotateSpeed: 500
   shotPower: 50
   weapon: {fileID: 0}
@@ -138,6 +138,8 @@ MonoBehaviour:
   aniState: 0
   movement: 0
   movement_s: 0
+  horizontal: 0
+  vertical: 0
 --- !u!136 &5366650022842559618
 CapsuleCollider:
   m_ObjectHideFlags: 0
