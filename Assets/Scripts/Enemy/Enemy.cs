@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
     public float attackStateTime, attackStateTimeMax;
     public float attackDelayTime, attackDelayTimeMax;
 
+    protected EnemyAniControl enemyAni;
     Vector3 oldPoint, target;
     int patrolState;
     GameManager gameManager;
@@ -46,6 +47,7 @@ public class Enemy : MonoBehaviour
         oldPoint = gameObject.transform.position;
         agent = GetComponent<NavMeshAgent>();
         colorType = Random.Range(0, 3);
+        enemyAni = GetComponent<EnemyAniControl>();
     }
 
     // Update is called once per frame
@@ -210,7 +212,7 @@ public class Enemy : MonoBehaviour
         agent.stoppingDistance = 0;
         if(patrolState == 0)
         {
-            if (Vector3.Distance(gameObject.transform.position, patrolPoint) < 3)
+            if (Vector3.Distance(gameObject.transform.position, patrolPoint) < 1)
             {
                 patrolState = 1;
             }
@@ -218,7 +220,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            if (Vector3.Distance(gameObject.transform.position, oldPoint) < 3)
+            if (Vector3.Distance(gameObject.transform.position, oldPoint) < 1)
             {
                 patrolState = 0;
             }
@@ -237,13 +239,14 @@ public class Enemy : MonoBehaviour
         {
             GameObject.Find("GameManager").GetComponent<ResultManager>().R0Count();
             Debug.Log("TRUETYPE");
-            gameObject.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color = new Vector4(1, 0, 0, 1);
+            enemyAni.ani.SetInteger("AniState", 10);
             gameObject.transform.GetChild(0).parent = null;
             GameObject.Find("SoundManager").GetComponent<SoundManager>().SoundIns(4, 5,gameObject.transform.position);
             Destroy(gameObject);
         }
         else
         {
+            enemyAni.ani.SetInteger("AniState", 1);
             Debug.Log("NOTYPE"+type+","+colorType);
         }
     }
