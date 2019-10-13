@@ -7,10 +7,11 @@ public class PauseManager : MonoBehaviour
 {
     public bool pause;
     public GameObject pauseObject;
+    GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManager = GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -24,17 +25,20 @@ public class PauseManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (pause == false)
+            if (gameManager.timeStopValue <= 0)
             {
-                pause = true;
-                pauseObject.SetActive(true);
-                Time.timeScale = 0;
-            }
-            else
-            {
-                pause = false;
-                pauseObject.SetActive(false);
-                Time.timeScale = 1;
+                if (pause == false)
+                {
+                    pause = true;
+                    pauseObject.SetActive(true);
+                    Time.timeScale = 0;
+                }
+                else
+                {
+                    pause = false;
+                    pauseObject.SetActive(false);
+                    Time.timeScale = 1;
+                }
             }
         }
     }
