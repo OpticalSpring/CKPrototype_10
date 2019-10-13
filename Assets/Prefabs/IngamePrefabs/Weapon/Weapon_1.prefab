@@ -77,7 +77,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   type: 1
-  distance: 15
+  distance: 50
   effect: {fileID: 5101748006055998929, guid: f9566686dec7c0440898aee66661e478, type: 3}
 --- !u!1 &4741882105905021407
 GameObject:
