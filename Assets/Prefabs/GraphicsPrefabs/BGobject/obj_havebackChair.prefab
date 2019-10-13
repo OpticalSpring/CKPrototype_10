@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 1739526528091477256}
   - component: {fileID: 1739526528094868776}
   - component: {fileID: 1739526528093902824}
+  - component: {fileID: 1587169274465936145}
   m_Layer: 0
   m_Name: obj_havebackChair
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,6 +78,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &1587169274465936145
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739526528091638056}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.94556254, y: 0.94556266, z: 1.3027754}
+  m_Center: {x: 0, y: 0.00000002980233, z: -0.00000005960466}
 --- !u!1 &5998006522029684848
 GameObject:
   m_ObjectHideFlags: 0

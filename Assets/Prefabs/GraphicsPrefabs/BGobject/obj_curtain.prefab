@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 777953072738557273}
   - component: {fileID: 777953072741948793}
   - component: {fileID: 777953072740851641}
+  - component: {fileID: 4919891160610471767}
   m_Layer: 0
   m_Name: obj_curtain
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,3 +78,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &4919891160610471767
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777953072738910585}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.000001, y: 0.3995203, z: 6.0000014}
+  m_Center: {x: -0.00000047683716, y: 0.00000014156106, z: 0}

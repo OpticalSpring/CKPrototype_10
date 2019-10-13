@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 7424502858768096765}
   - component: {fileID: 7424502858764705245}
   - component: {fileID: 7424502858765803293}
+  - component: {fileID: 6731580966221940968}
   m_Layer: 0
   m_Name: obj_bartable
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,6 +78,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &6731580966221940968
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7424502858767729117}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.89805204, y: 1.0000002, z: 1.0000002}
+  m_Center: {x: -0.00000014901161, y: 0, z: 0}
 --- !u!1 &8292683394054320956
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 3150291954690844872}
   - component: {fileID: 3150291954691614952}
   - component: {fileID: 3150291954692745768}
+  - component: {fileID: 3164607654041877086}
   m_Layer: 0
   m_Name: obj_door_Left
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,3 +78,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &3164607654041877086
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3150291954690553064}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 0.7754619, z: 4}
+  m_Center: {x: 0, y: -0.0002821833, z: 2}

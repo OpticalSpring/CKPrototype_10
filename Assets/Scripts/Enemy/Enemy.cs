@@ -63,9 +63,13 @@ public class Enemy : MonoBehaviour
             case Enemy.State.Idle:
                 break;
             case Enemy.State.Patrol:
+                enemyAni.aniState = 0;
                 Patrol();
                 break;
             case Enemy.State.Chase:
+                enemyAni.aniState = 0;
+                Chase();
+                break;
             case Enemy.State.Attack:
                 Chase();
                 break;
@@ -74,6 +78,8 @@ public class Enemy : MonoBehaviour
                 break;
         }
         Search();
+        gameObject.transform.GetChild(0).localEulerAngles = new Vector3(0, 0, 0);
+        gameObject.transform.GetChild(0).localPosition = new Vector3(0, 0, 0);
     }
 
     protected void Search()
@@ -201,7 +207,7 @@ public class Enemy : MonoBehaviour
 
     protected void Tracking()
     {
-        if (Vector3.Distance(gameObject.transform.position, target) < 2)
+        if (Vector3.Distance(gameObject.transform.position, agent.destination) < 3)
         {
             state = State.Patrol;
         }
