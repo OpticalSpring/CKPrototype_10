@@ -13,6 +13,7 @@ public class EnemyCloseType : Enemy
         {
             player.GetComponent<PlayerCharacterControl>().Hit();
             GameObject.Find("SoundManager").GetComponent<SoundManager>().SoundIns(4, 2, gameObject.transform.position);
+            enemyAni.ani.SetInteger("AniState", 2);
         }
     }
 }
