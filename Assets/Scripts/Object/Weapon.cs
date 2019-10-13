@@ -20,7 +20,7 @@ public class Weapon : MonoBehaviour
     {
         if (gameManager.timeStopValue > 0)
         {
-            gameObject.transform.GetChild(0).gameObject.GetComponent<Outline>().OutlineWidth = 2;
+            gameObject.transform.GetChild(0).gameObject.GetComponent<Outline>().OutlineWidth = 4;
         }
         else
         {
