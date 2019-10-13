@@ -46,7 +46,6 @@ public class Enemy : MonoBehaviour
         searchCam = GetComponent<Camera>();
         oldPoint = gameObject.transform.position;
         agent = GetComponent<NavMeshAgent>();
-       // colorType = Random.Range(0, 3);
         enemyAni = GetComponent<EnemyAniControl>();
     }
 

@@ -117,21 +117,27 @@ public class PlayerCharacterControl : MonoBehaviour
         else if (Input.GetMouseButtonUp(0) && playerState.weapon != null)
         {
             playerAni.aniState = 4;
-            Collider[] colliderHits = Physics.OverlapSphere(playerState.weaponPoint.position, 1);
-            int count = 0;
-            for (int i = 0; i < colliderHits.Length; i++)
+            StartCoroutine("DelayAttack");
+        }
+    }
+
+    IEnumerator DelayAttack()
+    {
+        yield return new WaitForSeconds(0.2f);
+        Collider[] colliderHits = Physics.OverlapSphere(playerState.weaponPoint.position, 1);
+        int count = 0;
+        for (int i = 0; i < colliderHits.Length; i++)
+        {
+            if (colliderHits[i].CompareTag("Enemy"))
             {
-                if (colliderHits[i].CompareTag("Enemy"))
-                {
-                    playerState.weapon.GetComponent<Weapon>().Attack(colliderHits[i].gameObject);
-                    count++;
-                }
+                playerState.weapon.GetComponent<Weapon>().Attack(colliderHits[i].gameObject);
+                count++;
             }
-            if (count > 0)
-            {
-                playerState.weapon.GetComponent<Weapon>().Hit(playerState.weaponPoint.position);
-                GameObject.Find("SoundManager").GetComponent<SoundManager>().SoundPlay(1, 0);
-            }
+        }
+        if (count > 0)
+        {
+            playerState.weapon.GetComponent<Weapon>().Hit(playerState.weaponPoint.position);
+            GameObject.Find("SoundManager").GetComponent<SoundManager>().SoundPlay(1, 0);
         }
     }
     void Turn(GameObject obj, Vector3 target, float speed)

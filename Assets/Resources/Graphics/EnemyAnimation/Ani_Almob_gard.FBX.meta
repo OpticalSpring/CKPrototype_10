@@ -192,7 +192,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Enemy_Gard
       takeName: Take 001
-      firstFrame: 0
+      firstFrame: 10
       lastFrame: 33
       wrapMode: 0
       orientationOffsetY: 0

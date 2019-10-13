@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/TitleScene_Camera.unity
     guid: fba3cb258afba0844b1094cc867f93ba
   - enabled: 1
-    path: Assets/Scenes/Object_place.unity
-    guid: 6c7618c2a63f08f44b3bff696255c1af
+    path: Assets/Scenes/Object_place_.unity
+    guid: 82c154b377cf1e140848c5ea3c5e479d
   - enabled: 1
     path: Assets/Scenes/Object_place_bossroom.unity
     guid: aade54406fa7e13459aed96cabd7bb44
