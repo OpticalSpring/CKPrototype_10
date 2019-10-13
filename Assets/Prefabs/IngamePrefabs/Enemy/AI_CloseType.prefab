@@ -527,7 +527,7 @@ Transform:
   m_LocalPosition: {x: -40.79, y: 0, z: 4.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 621922026055917857}
+  - {fileID: 621922026055788803}
   - {fileID: 7081719605318619994}
   - {fileID: 5878241347316875161}
   - {fileID: 1927855319707942937}
@@ -581,7 +581,7 @@ MonoBehaviour:
   normalSpeed: 2
   runSpeed: 4
   rotateSpeed: 0
-  searchDistance: 7
+  searchDistance: 10
   attackDistance: 3
   patrolPoint: {x: 0, y: 0, z: 0}
   idleStateTime: 0
@@ -906,19 +906,19 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: ce30e2e21532dcd41aa106d539631252, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9365aa34bc58c8b44955c2a84aa87e64, type: 3}
---- !u!4 &621922026055917587 stripped
+--- !u!4 &621922026055788785 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400120, guid: 9365aa34bc58c8b44955c2a84aa87e64,
     type: 3}
   m_PrefabInstance: {fileID: 621922026055922185}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &621922026055924985 stripped
+--- !u!4 &621922026055788747 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400066, guid: 9365aa34bc58c8b44955c2a84aa87e64,
     type: 3}
   m_PrefabInstance: {fileID: 621922026055922185}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &621922026055917857 stripped
+--- !u!4 &621922026055788803 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400138, guid: 9365aa34bc58c8b44955c2a84aa87e64,
     type: 3}
@@ -929,7 +929,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 621922026055917587}
+    m_TransformParent: {fileID: 621922026055788785}
     m_Modifications:
     - target: {fileID: 100000, guid: 8ccf9939ce64e474ea1cc0ebcf6dac72, type: 3}
       propertyPath: m_Name
@@ -986,7 +986,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 621922026055924985}
+    m_TransformParent: {fileID: 621922026055788747}
     m_Modifications:
     - target: {fileID: 9030126624783733848, guid: 214ea5fe15a7af54e8fd099bf401fa30,
         type: 3}
