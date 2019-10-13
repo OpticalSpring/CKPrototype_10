@@ -734,7 +734,7 @@ MonoBehaviour:
   normalSpeed: 2
   runSpeed: 4
   rotateSpeed: 0
-  searchDistance: 50
+  searchDistance: 10
   attackDistance: 20
   patrolPoint: {x: 0, y: 0, z: 0}
   idleStateTime: 0
