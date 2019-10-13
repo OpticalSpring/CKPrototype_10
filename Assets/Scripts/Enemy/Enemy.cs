@@ -201,7 +201,7 @@ public class Enemy : MonoBehaviour
 
     protected void Tracking()
     {
-        if (Vector3.Distance(gameObject.transform.position, target) < 3)
+        if (Vector3.Distance(gameObject.transform.position, target) < 2)
         {
             state = State.Patrol;
         }
@@ -246,9 +246,17 @@ public class Enemy : MonoBehaviour
         }
         else
         {
+            enemyAni.aniState = 1;
             enemyAni.ani.SetInteger("AniState", 1);
             Debug.Log("NOTYPE"+type+","+colorType);
+            StartCoroutine("DelayBack");
         }
+    }
+
+    IEnumerator DelayBack()
+    {
+        yield return new WaitForSeconds(0.1f);
+        enemyAni.aniState = 0;
     }
 
     protected void TimeStopState()
@@ -258,19 +266,23 @@ public class Enemy : MonoBehaviour
             switch (colorType)
             {
                 case 0:
-                    colorObj.GetComponent<MeshRenderer>().material.color = new Vector4(1, 0, 0, 1);
+                    colorObj.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", new Vector4(1, 0, 0, 1));
+                    colorObj.GetComponent<MeshRenderer>().material.SetColor("_Color", new Vector4(1, 0, 0, 1));
                     break;
                 case 1:
-                    colorObj.GetComponent<MeshRenderer>().material.color = new Vector4(0, 1, 0, 1);
+                    colorObj.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", new Vector4(0, 1, 0, 1));
+                    colorObj.GetComponent<MeshRenderer>().material.SetColor("_Color", new Vector4(0, 1, 0, 1));
                     break;
                 case 2:
-                    colorObj.GetComponent<MeshRenderer>().material.color = new Vector4(0, 0, 1, 1);
+                    colorObj.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", new Vector4(0, 0, 1, 1));
+                    colorObj.GetComponent<MeshRenderer>().material.SetColor("_Color", new Vector4(0, 0, 1, 1));
                     break;
             }
         }
         else
         {
-            colorObj.GetComponent<MeshRenderer>().material.color = new Vector4(1, 1, 1, 1);
+            colorObj.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", new Vector4(1, 1, 1, 1));
+            colorObj.GetComponent<MeshRenderer>().material.SetColor("_Color", new Vector4(1, 1, 1, 1));
         }
     }
     

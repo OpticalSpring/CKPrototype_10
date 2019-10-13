@@ -117,7 +117,7 @@ public class PlayerCharacterControl : MonoBehaviour
         else if (Input.GetMouseButtonUp(0) && playerState.weapon != null)
         {
             playerAni.aniState = 4;
-            Collider[] colliderHits = Physics.OverlapSphere(playerState.weaponPoint.position, 3);
+            Collider[] colliderHits = Physics.OverlapSphere(playerState.weaponPoint.position, 1);
             int count = 0;
             for (int i = 0; i < colliderHits.Length; i++)
             {

@@ -73,7 +73,7 @@ public class Weapon : MonoBehaviour
 
     public void Attack(GameObject target)
     {
-        gameObject.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color = new Vector4(1, 0, 0, 1);
+       // gameObject.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color = new Vector4(1, 0, 0, 1);
         target.GetComponent<Enemy>().Hit(type);
     }
 }
