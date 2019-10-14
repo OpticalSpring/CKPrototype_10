@@ -108,13 +108,13 @@ public class PlayerCharacterControl : MonoBehaviour
 
     void Shot()
     {
-        if (playerState.state == PlayerState.State.Aim && Input.GetMouseButtonUp(0) && shoting == false)
+        if (playerState.state == PlayerState.State.Aim && Input.GetMouseButtonDown(0) && shoting == false)
         {
             playerAni.aniState = 3;
             StartCoroutine("DelayShot");
             shoting = true;
         }
-        else if (Input.GetMouseButtonUp(0) && playerState.weapon != null)
+        else if (Input.GetMouseButtonDown(0) && playerState.weapon != null)
         {
             playerAni.aniState = 4;
             StartCoroutine("DelayAttack");

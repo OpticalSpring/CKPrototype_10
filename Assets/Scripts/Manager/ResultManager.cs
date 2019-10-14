@@ -11,10 +11,20 @@ public class ResultManager : MonoBehaviour
     public int[] rValue;
     GameObject player;
     Vector3 oldPos;
+
+    public int sceneNumber;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
+        if (sceneNumber == 1)
+        {
+            SetRusult();
+        }
+        if (sceneNumber == 2)
+        {
+            GetResult();
+        }
     }
 
     // Update is called once per frame
@@ -66,6 +76,24 @@ public class ResultManager : MonoBehaviour
         {
             fText[i].text = "" + rValue[i];
         }
+    }
+
+    public void GetResult()
+    {
+        rValue[0] = PlayerPrefs.GetInt("R0");
+        rValue[1] = PlayerPrefs.GetInt("R1");
+        rValue[2] = PlayerPrefs.GetInt("R2");
+        rValue[3] = PlayerPrefs.GetInt("R3");
+        rValue[4] = PlayerPrefs.GetInt("R4");
+    }
+
+    public void SetRusult()
+    {
+        PlayerPrefs.SetInt("R0", rValue[0]);
+        PlayerPrefs.SetInt("R1", rValue[1]);
+        PlayerPrefs.SetInt("R2", rValue[2]);
+        PlayerPrefs.SetInt("R3", rValue[3]);
+        PlayerPrefs.SetInt("R4", rValue[4]);
     }
 
 }

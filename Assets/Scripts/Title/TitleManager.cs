@@ -7,6 +7,8 @@ public class TitleManager : MonoBehaviour
 {
     private void Start()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         GameObject.Find("SoundManager").GetComponent<SoundManager>().SoundPlay(0, 0);
     }
     public void GameStart()

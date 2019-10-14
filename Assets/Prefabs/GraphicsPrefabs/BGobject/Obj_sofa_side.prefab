@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 8096390145904017725}
   - component: {fileID: 8096390145902920701}
   - component: {fileID: 4789040482674998377}
+  - component: {fileID: 2480585128655621992}
   m_Layer: 0
   m_Name: Obj_sofa_side
   m_TagString: Wall
@@ -120,5 +121,18 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5233668, y: 1.0000001, z: 1.6216335}
-  m_Center: {x: 0, y: -0.000000059604645, z: 0}
+  m_Size: {x: 1.5233668, y: 1.0000001, z: 0.5567453}
+  m_Center: {x: 0, y: -0.000000059604645, z: -0.5324441}
+--- !u!65 &2480585128655621992
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8096390145905188157}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.48421, y: 1.0000001, z: 1.6216335}
+  m_Center: {x: 0.51957846, y: -0.000000059604645, z: 0}
