@@ -20,6 +20,6 @@ public class AutoNextScene : MonoBehaviour
     IEnumerator NextScene()
     {
         yield return new WaitForSeconds(5f);
-        SceneManager.LoadSceneAsync(3);
+       // SceneManager.LoadSceneAsync(3);
     }
 }

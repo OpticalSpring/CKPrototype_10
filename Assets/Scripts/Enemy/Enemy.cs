@@ -206,7 +206,7 @@ public class Enemy : MonoBehaviour
 
     protected void Tracking()
     {
-        if (Vector3.Distance(gameObject.transform.position, agent.destination) < 3)
+        if (Vector3.Distance(gameObject.transform.position, agent.destination) < 4)
         {
             state = State.Patrol;
         }
@@ -247,6 +247,18 @@ public class Enemy : MonoBehaviour
             gameObject.transform.GetChild(0).parent = null;
             GameObject.Find("SoundManager").GetComponent<SoundManager>().SoundIns(4, 5,gameObject.transform.position);
             enemyAni.ani.SetInteger("AniState", 10);
+            switch (colorType)
+            {
+                case 0:
+                    GameObject.Find("GameManager").GetComponent<ResultManager>().R5Count();
+                    break;
+                case 1:
+                    GameObject.Find("GameManager").GetComponent<ResultManager>().R6Count();
+                    break;
+                case 2:
+                    GameObject.Find("GameManager").GetComponent<ResultManager>().R7Count();
+                    break;
+            }
             Destroy(gameObject);
         }
         else if (colorType == 3)

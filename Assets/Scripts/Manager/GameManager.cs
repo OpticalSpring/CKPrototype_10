@@ -75,9 +75,17 @@ public class GameManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Time.timeScale = 1;
+            if (gameClear == true)
+            {
+                Time.timeScale = 1;
+                SceneManager.LoadSceneAsync(3);
+            }
+            else
+            {
+                Time.timeScale = 1;
 
-            SceneManager.LoadSceneAsync(0);
+                SceneManager.LoadSceneAsync(0);
+            }
         }
     }
 
